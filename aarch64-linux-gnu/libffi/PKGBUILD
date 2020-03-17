@@ -1,0 +1,42 @@
+# Maintainer: [NAME] <some@email.com>
+
+_target=aarch64-linux-gnu
+
+_pkgname=libffi
+pkgname=$_target-$_pkgname
+pkgver=3.2.1
+pkgrel=1
+pkgdec='Portable foreign function interface library'
+arch=(x86_64)
+url='http://sourceware.org/libffi/'
+licenses=(MIT)
+depends=($_target-glibc)
+makedepends=()
+options=(!strip staticlibs !buildflags)
+source=(
+  ftp://sourceware.org/pub/libffi/libffi-$pkgver.tar.gz
+)
+sha256sums=(
+  'd06ebb8e1d9a22d19e38d63fdb83954253f39bedc5d46232a05645685722ca37'
+)
+
+_srcdir=$_pkgname-$pkgver
+
+build() {
+  cd $_srcdir
+
+  mkdir -p build-$_target && pushd build-$_target
+  $_target-configure --enable-pax_emutramp
+  make
+  popd
+}
+
+package() {
+  cd $_srcdir
+
+  pushd build-$_target
+  make DESTDIR="$pkgdir" install
+  popd
+
+  rm "${pkgdir}"/usr/$_target/share/info/dir
+}
