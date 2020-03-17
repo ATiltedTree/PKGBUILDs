@@ -1,0 +1,37 @@
+# Maintainer: Tilmann Meyer <tilmann.meyer@gmx.net>
+
+_target=aarch64-linux-gnu
+
+pkgname=$_target-mesa
+pkgver=20.0.0
+pkgrel=1
+pkgdec='An open-source implementation of the OpenGL specification (ARM64)'
+arch=(x86_64)
+url='https://www.mesa3d.org/'
+licenses=("custom")
+depends=("$_target-gcc")
+makedepends=("$_target-meson" "$_target-libdrm" "python-mako")
+options=(!strip staticlibs)
+source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig})
+sha256sums=(
+  'bb6db3e54b608d2536d4000b3de7dd3ae115fc114e8acbb5afff4b3bbed04b34'
+  'SKIP'
+)
+validpgpkeys=(
+  71C4B75620BC75708B4BDB254C95FAAB3EB073EC # Dylan Baker <dylan@pnwbakers.com>
+  A5CC9FEC93F2F837CB044912336909B6B25FADFA # Juan A. Suarez Romero <jasuarez@igalia.com>
+)
+_srcdir=mesa-$pkgver
+
+build() {
+  cd $_srcdir
+
+  $_target-meson build-$_target
+  ninja -C build-$_target
+}
+
+package() {
+  cd $_srcdir
+
+  ninja -C build-$_target install
+}
