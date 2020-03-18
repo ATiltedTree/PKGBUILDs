@@ -12,7 +12,7 @@ url='https://libexpat.github.io/'
 licenses=(custom)
 depends=($_target-glibc)
 makedepends=($_target-cmake)
-options=(!strip staticlibs !buildflags)
+options=(!buildflags)
 source=(
   https://github.com/libexpat/libexpat/releases/download/R_${pkgver//./_}/expat-${pkgver}.tar.bz2{,.asc}
 )
@@ -25,6 +25,14 @@ validpgpkeys=(
 )
 
 _srcdir=$_pkgname-$pkgver
+
+strip() {
+  ${_target}-strip "$@"
+}
+
+objcopy() {
+  ${_target}-objcopy "$@"
+}
 
 build() {
   cd $_srcdir

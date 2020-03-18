@@ -11,7 +11,7 @@ url='http://fedoraproject.org/wiki/MinGW'
 licenses=(GPL)
 depends=(meson $_target-gcc $_target-pkg-config $_target-environment)
 makedepends=()
-options=(!strip staticlibs)
+options=()
 source=(
   'meson.sh'
   'toolchain.meson'

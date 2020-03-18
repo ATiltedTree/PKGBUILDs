@@ -12,7 +12,7 @@ url='https://tukaani.org/xz/'
 licenses=(GPL LGPL)
 depends=()
 makedepends=($_target-gcc)
-options=(!strip staticlibs !buildflags)
+options=(!buildflags)
 source=(
   https://tukaani.org/$_pkgname/$_pkgname-$pkgver.tar.gz{,.sig}
 )
@@ -23,6 +23,14 @@ sha256sums=(
 validpgpkeys=('3690C240CE51B4670D30AD1C38EE757D69184620')
 
 _srcdir=$_pkgname-$pkgver
+
+strip() {
+  ${_target}-strip "$@"
+}
+
+objcopy() {
+  ${_target}-objcopy "$@"
+}
 
 build() {
   cd $_srcdir

@@ -11,7 +11,7 @@ url='http://fedoraproject.org/wiki/MinGW'
 licenses=(GPL)
 depends=(cmake $_target-gcc $_target-pkg-config $_target-environment)
 makedepends=()
-options=(!strip staticlibs !buildflags)
+options=()
 source=(
   'cmake.sh'
   'toolchain.cmake'

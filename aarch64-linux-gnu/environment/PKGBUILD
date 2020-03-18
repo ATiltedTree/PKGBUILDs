@@ -10,7 +10,7 @@ arch=(x86_64)
 url='http://fedoraproject.org/wiki/MinGW'
 licenses=(GPL)
 depends=($_target-gcc)
-options=(!strip staticlibs !buildflags)
+options=()
 source=(
   'environment.sh'
 )

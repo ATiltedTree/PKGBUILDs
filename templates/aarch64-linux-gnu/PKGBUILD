@@ -1,0 +1,47 @@
+# Maintainer: [NAME] <some@email.com>
+
+_target=aarch64-linux-gnu
+
+_pkgname=
+pkgname=$_target-$_pkgname
+pkgver=
+pkgrel=
+pkgdec=''
+arch=(x86_64)
+url=''
+licenses=()
+depends=($_target-glibc)
+makedepends=()
+options=(!buildflags)
+source=()
+sha256sums=()
+
+_srcdir=
+
+strip() {
+  ${_target}-strip "$@"
+}
+
+objcopy() {
+  ${_target}-objcopy "$@"
+}
+
+prepare() {
+
+}
+
+build() {
+  cd $_srcdir
+
+  mkdir -p build-$_target && pushd build-$_target
+  # build
+  popd
+}
+
+package() {
+  cd $_srcdir
+
+  pushd build-$_target
+
+  popd
+}

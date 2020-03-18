@@ -12,7 +12,7 @@ url='http://xmlsoft.org/XSLT/'
 licenses=(custom)
 depends=($_target-libxml2 $_target-libgcrypt)
 makedepends=()
-options=(!strip staticlibs !buildflags)
+options=(!buildflags)
 source=(
   https://gitlab.gnome.org/GNOME/$_pkgname/-/archive/v$pkgver/$_pkgname-v$pkgver.tar.gz
 )
@@ -21,6 +21,14 @@ sha256sums=(
 )
 
 _srcdir=$_pkgname-v$pkgver
+
+strip() {
+  ${_target}-strip "$@"
+}
+
+objcopy() {
+  ${_target}-objcopy "$@"
+}
 
 prepare() {
   cd $_srcdir

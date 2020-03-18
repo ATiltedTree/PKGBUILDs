@@ -11,7 +11,7 @@ url='https://www.zlib.net/'
 licenses=('custom')
 depends=($_target-glibc)
 makedepends=($_target-gcc)
-options=(!strip staticlibs !buildflags)
+options=(!buildflags)
 source=(
   https://zlib.net/zlib-${pkgver}.tar.gz{,.asc}
 )
@@ -24,6 +24,14 @@ validpgpkeys=(
 )
 
 _srcdir=zlib-$pkgver
+
+strip() {
+  ${_target}-strip "$@"
+}
+
+objcopy() {
+  ${_target}-objcopy "$@"
+}
 
 prepare() {
   cd $_srcdir

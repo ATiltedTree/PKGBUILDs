@@ -12,7 +12,7 @@ url='https://invisible-island.net/ncurses/ncurses.html'
 licenses=(MIT)
 depends=($_target-glibc)
 makedepends=($_target-configure)
-options=(!strip staticlibs !buildflags)
+options=(!buildflags)
 source=(
   https://ftp.gnu.org/pub/gnu/ncurses/ncurses-$pkgver.tar.gz{,.sig}
 )
@@ -25,6 +25,14 @@ validpgpkeys=(
 )
 
 _srcdir=$_pkgname-${pkgver/+/-}
+
+strip() {
+  ${_target}-strip "$@"
+}
+
+objcopy() {
+  ${_target}-objcopy "$@"
+}
 
 build() {
   cd $_srcdir

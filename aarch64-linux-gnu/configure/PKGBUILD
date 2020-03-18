@@ -11,7 +11,7 @@ url='http://fedoraproject.org/wiki/MinGW'
 licenses=(GPL)
 depends=($_target-gcc $_target-pkg-config $_target-environment)
 makedepends=()
-options=(!strip staticlibs)
+options=()
 source=('configure.sh')
 sha256sums=('bf13d26c868e66341770002dd3e3c6a77b10f453bc2b43dda477e2827d5172e0')
 

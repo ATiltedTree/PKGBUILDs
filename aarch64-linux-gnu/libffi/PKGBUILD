@@ -12,7 +12,7 @@ url='http://sourceware.org/libffi/'
 licenses=(MIT)
 depends=($_target-glibc)
 makedepends=()
-options=(!strip staticlibs !buildflags)
+options=(!buildflags)
 source=(
   ftp://sourceware.org/pub/libffi/libffi-$pkgver.tar.gz
 )
@@ -21,6 +21,14 @@ sha256sums=(
 )
 
 _srcdir=$_pkgname-$pkgver
+
+strip() {
+  ${_target}-strip "$@"
+}
+
+objcopy() {
+  ${_target}-objcopy "$@"
+}
 
 build() {
   cd $_srcdir
@@ -37,6 +45,4 @@ package() {
   pushd build-$_target
   make DESTDIR="$pkgdir" install
   popd
-
-  rm "${pkgdir}"/usr/$_target/share/info/dir
 }

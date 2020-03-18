@@ -12,7 +12,7 @@ url='https://www.gnupg.org'
 licenses=(LGPL)
 depends=($_target-libgpg-error)
 makedepends=()
-options=(!strip staticlibs !buildflags)
+options=(!buildflags)
 source=(
   https://gnupg.org/ftp/gcrypt/$_pkgname/$_pkgname-$pkgver.tar.bz2{,.sig}
 )
@@ -26,6 +26,14 @@ validpgpkeys=(
 )
 
 _srcdir=$_pkgname-$pkgver
+
+strip() {
+  ${_target}-strip "$@"
+}
+
+objcopy() {
+  ${_target}-objcopy "$@"
+}
 
 prepare() {
   cd $_srcdir
@@ -48,6 +56,4 @@ package() {
   pushd build-$_target
   make DESTDIR="$pkgdir" install
   popd
-
-  rm "${pkgdir}"/usr/$_target/share/info/dir
 }

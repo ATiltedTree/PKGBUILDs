@@ -12,7 +12,7 @@ url='http://lz4.github.io/lz4/'
 licenses=(GPL2)
 depends=($_target-glibc)
 makedepends=($_target-gcc)
-options=(!strip staticlibs !buildflags)
+options=(!buildflags)
 source=(
   https://github.com/$_pkgname/$_pkgname/archive/v$pkgver.tar.gz
 )
@@ -21,6 +21,14 @@ sha256sums=(
 )
 
 _srcdir=$_pkgname-$pkgver
+
+strip() {
+  ${_target}-strip "$@"
+}
+
+objcopy() {
+  ${_target}-objcopy "$@"
+}
 
 build() {
   cd $_srcdir

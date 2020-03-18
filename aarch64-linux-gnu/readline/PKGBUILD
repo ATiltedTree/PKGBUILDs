@@ -14,14 +14,14 @@ url='https://tiswww.case.edu/php/chet/readline/rltop.html'
 licenses=(GPL)
 depends=($_target-glibc $_target-ncurses)
 makedepends=($_target-configure)
-options=(!strip staticlibs !buildflags)
+options=(!buildflags)
 source=(
   https://ftp.gnu.org/gnu/readline/readline-$_basever.tar.gz{,.sig}
 )
 
 if [ ${_patchlevel} -gt 00 ]; then
   for ((_p = 1; _p <= $((10#${_patchlevel})); _p++)); do
-    source=(${source[@]} "https://ftp.gnu.org/gnu/readline/readline-${_basever}-patches/readline${_basever//./}-$(printf "%03d" ${_p})"{,.sig})
+    source+=("readline${_basever}-${_p}.patch::https://ftp.gnu.org/gnu/readline/readline-${_basever}-patches/readline${_basever//./}-$(printf "%03d" ${_p})"{,.sig})
   done
 fi
 
@@ -43,12 +43,20 @@ validpgpkeys=(
 
 _srcdir=$_pkgname-$_basever
 
+strip() {
+  ${_target}-strip "$@"
+}
+
+objcopy() {
+  ${_target}-objcopy "$@"
+}
+
 prepare() {
   cd $_srcdir
 
-  for ((_p = 1; _p <= $((10#${_patchlevel})); _p++)); do
-    msg "applying patch readline${_basever//./}-$(printf "%03d" ${_p})"
-    patch -Np0 -i ${srcdir}/readline${_basever//./}-$(printf "%03d" ${_p})
+  for patch in "$srcdir/"*.patch; do
+    msg2 "Applying patch $patch"
+    patch -Np0 -s -i "$patch"
   done
 
   # Remove RPATH from shared objects (FS#14366)
@@ -70,6 +78,4 @@ package() {
   pushd build-$_target
   make DESTDIR="$pkgdir" install
   popd
-
-  rm "${pkgdir}"/usr/$_target/share/info/dir
 }

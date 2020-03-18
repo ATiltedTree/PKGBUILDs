@@ -12,7 +12,7 @@ url='https://wayland.freedesktop.org/'
 licenses=(MIT)
 depends=($_target-glibc $_target-libffi $_target-expat $_target-libxml2)
 makedepends=($_target-meson $_target-libxslt doxygen xmlto)
-options=(!strip staticlibs !buildflags)
+options=(!buildflags)
 source=(
   https://wayland.freedesktop.org/releases/$_pkgname-$pkgver.tar.xz{,.sig}
 )
@@ -27,6 +27,14 @@ validpgpkeys=(
 )
 
 _srcdir=$_pkgname-$pkgver
+
+strip() {
+  ${_target}-strip "$@"
+}
+
+objcopy() {
+  ${_target}-objcopy "$@"
+}
 
 build() {
   cd $_srcdir

@@ -12,7 +12,7 @@ url='https://dri.freedesktop.org/'
 licenses=('custom')
 depends=($_target-gcc)
 makedepends=($_target-meson)
-options=(!strip staticlibs !buildflags)
+options=(!buildflags)
 source=(
   https://dri.freedesktop.org/$_pkgname/$_pkgname-$pkgver.tar.bz2{,.sig}
 )
@@ -36,6 +36,14 @@ validpgpkeys=(
 )
 
 _srcdir=$_pkgname-$pkgver
+
+strip() {
+  ${_target}-strip "$@"
+}
+
+objcopy() {
+  ${_target}-objcopy "$@"
+}
 
 check() {
   cd $_srcdir

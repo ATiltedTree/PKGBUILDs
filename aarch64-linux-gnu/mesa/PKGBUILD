@@ -11,7 +11,7 @@ url='https://www.mesa3d.org/'
 licenses=("custom")
 depends=("$_target-gcc")
 makedepends=("$_target-meson" "$_target-libdrm" "python-mako")
-options=(!strip staticlibs)
+options=(!buildflags)
 source=(https://mesa.freedesktop.org/archive/mesa-${pkgver}.tar.xz{,.sig})
 sha256sums=(
   'bb6db3e54b608d2536d4000b3de7dd3ae115fc114e8acbb5afff4b3bbed04b34'
@@ -22,6 +22,14 @@ validpgpkeys=(
   A5CC9FEC93F2F837CB044912336909B6B25FADFA # Juan A. Suarez Romero <jasuarez@igalia.com>
 )
 _srcdir=mesa-$pkgver
+
+strip() {
+  ${_target}-strip "$@"
+}
+
+objcopy() {
+  ${_target}-objcopy "$@"
+}
 
 build() {
   cd $_srcdir

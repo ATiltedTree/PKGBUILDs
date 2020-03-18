@@ -12,7 +12,7 @@ url='https://www.zstd.net/'
 licenses=(BSD GPL2)
 depends=($_target-zlib $_target-xz $_target-lz4)
 makedepends=($_target-gcc)
-options=(!strip staticlibs !buildflags)
+options=(!buildflags)
 source=(
   https://github.com/facebook/$_pkgname/archive/v$pkgver.tar.gz
   'Fix-wrong-printf-escaping.patch'
@@ -23,6 +23,14 @@ sha256sums=(
 )
 
 _srcdir=$_pkgname-$pkgver
+
+strip() {
+  ${_target}-strip "$@"
+}
+
+objcopy() {
+  ${_target}-objcopy "$@"
+}
 
 prepare() {
   cd $_srcdir
