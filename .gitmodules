@@ -1,0 +1,63 @@
+[submodule "aarch64-linux-gnu/environment"]
+path = aarch64-linux-gnu/environment
+url = https://aur.archlinux.org/aarch64-linux-gnu-environment.git
+[submodule "aarch64-linux-gnu/cmake"]
+path = aarch64-linux-gnu/cmake
+url = https://aur.archlinux.org/aarch64-linux-gnu-cmake.git
+[submodule "aarch64-linux-gnu/expat"]
+path = aarch64-linux-gnu/expat
+url = https://aur.archlinux.org/aarch64-linux-gnu-expat.git
+[submodule "aarch64-linux-gnu/configure"]
+path = aarch64-linux-gnu/configure
+url = https://aur.archlinux.org/aarch64-linux-gnu-configure.git
+[submodule "aarch64-linux-gnu/zlib"]
+path = aarch64-linux-gnu/zlib
+url = https://aur.archlinux.org/aarch64-linux-gnu-zlib.git
+[submodule "aarch64-linux-gnu/libffi"]
+path = aarch64-linux-gnu/libffi
+url = https://aur.archlinux.org/aarch64-linux-gnu-libffi.git
+[submodule "aarch64-linux-gnu/util-linux"]
+path = aarch64-linux-gnu/util-linux
+url = https://aur.archlinux.org/aarch64-linux-gnu-util-linux.git
+[submodule "aarch64-linux-gnu/pcre"]
+path = aarch64-linux-gnu/pcre
+url = https://aur.archlinux.org/aarch64-linux-gnu-pcre.git
+[submodule "aarch64-linux-gnu/glib2"]
+path = aarch64-linux-gnu/glib2
+url = https://aur.archlinux.org/aarch64-linux-gnu-glib2.git
+[submodule "aarch64-linux-gnu/xz"]
+path = aarch64-linux-gnu/xz
+url = https://aur.archlinux.org/aarch64-linux-gnu-xz.git
+[submodule "aarch64-linux-gnu/bzip2"]
+path = aarch64-linux-gnu/bzip2
+url = https://aur.archlinux.org/aarch64-linux-gnu-bzip2.git
+[submodule "aarch64-linux-gnu/icu"]
+path = aarch64-linux-gnu/icu
+url = https://aur.archlinux.org/aarch64-linux-gnu-icu.git
+[submodule "aarch64-linux-gnu/libgcrypt"]
+path = aarch64-linux-gnu/libgcrypt
+url = https://aur.archlinux.org/aarch64-linux-gnu-libgcrypt.git
+[submodule "aarch64-linux-gnu/libgpg-error"]
+path = aarch64-linux-gnu/libgpg-error
+url = https://aur.archlinux.org/aarch64-linux-gnu-libgpg-error.git
+[submodule "aarch64-linux-gnu/libxml2"]
+path = aarch64-linux-gnu/libxml2
+url = https://aur.archlinux.org/aarch64-linux-gnu-libxml2.git
+[submodule "aarch64-linux-gnu/libxslt"]
+path = aarch64-linux-gnu/libxslt
+url = https://aur.archlinux.org/aarch64-linux-gnu-libxslt.git
+[submodule "aarch64-linux-gnu/lz4"]
+path = aarch64-linux-gnu/lz4
+url = https://aur.archlinux.org/aarch64-linux-gnu-lz4.git
+[submodule "aarch64-linux-gnu/meson"]
+path = aarch64-linux-gnu/meson
+url = https://aur.archlinux.org/aarch64-linux-gnu-meson.git
+[submodule "aarch64-linux-gnu/ncurses"]
+path = aarch64-linux-gnu/ncurses
+url = https://aur.archlinux.org/aarch64-linux-gnu-ncurses.git
+[submodule "aarch64-linux-gnu/wayland"]
+path = aarch64-linux-gnu/wayland
+url = https://aur.archlinux.org/aarch64-linux-gnu-wayland.git
+[submodule "aarch64-linux-gnu/zstd"]
+path = aarch64-linux-gnu/zstd
+url = https://aur.archlinux.org/aarch64-linux-gnu-zstd.git
